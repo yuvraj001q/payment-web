@@ -1,5 +1,3 @@
-export const runtime = 'edge';
-
 import { auth } from "@/config/auth";
 import { getProfileByUserId, getAnalyticsSummary, getTilesByProfileId } from "@/db/queries";
 import { redirect } from "next/navigation";

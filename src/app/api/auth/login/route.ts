@@ -1,5 +1,3 @@
-export const runtime = "edge";
-
 import { NextResponse } from "next/server";
 import { getUserByEmail } from "@/db/queries";
 import { signJWT, AUTH_COOKIE } from "@/lib/jwt";

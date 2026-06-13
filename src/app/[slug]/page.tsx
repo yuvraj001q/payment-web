@@ -1,4 +1,4 @@
-export const runtime = 'edge';
+
 
 import { notFound } from "next/navigation";
 import { getProfileBySlug, getTilesByProfileId, trackProfileView } from "@/db/queries";

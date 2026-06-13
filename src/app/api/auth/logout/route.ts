@@ -1,5 +1,3 @@
-export const runtime = "edge";
-
 import { NextResponse } from "next/server";
 import { AUTH_COOKIE } from "@/lib/jwt";
 
