@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import { auth } from "@/config/auth";
 import { getProfileByUserId, getTilesByProfileId } from "@/db/queries";
 import { redirect } from "next/navigation";
