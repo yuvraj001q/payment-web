@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:pages": "npx @opennextjs/cloudflare build && cp .open-next/worker.js .open-next/_worker.js",
+    "build:pages": "npx @opennextjs/cloudflare build --skipWranglerConfigCheck && node -e \"require('fs').writeFileSync('.open-next/_worker.js','export default { async fetch(r,e,c) { return (await import(\\\"\\\".concat(\\\"./\\\",\\\"worker.js\\\")\\\")).default.fetch(r,e,c) } }')\"",
     "preview": "npx wrangler pages dev .open-next",
     "deploy": "npx wrangler pages deploy .open-next",
     "start": "next start",
