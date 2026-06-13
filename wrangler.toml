@@ -1,7 +1,7 @@
-name = "predator-grid"
+name = "payment-web1"
 compatibility_date = "2024-12-01"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".vercel/output/static"
 
 [vars]
-NEXT_PUBLIC_APP_URL = "https://predator-grid.pages.dev"
+NEXT_PUBLIC_APP_URL = "https://payment-web1.pages.dev"
