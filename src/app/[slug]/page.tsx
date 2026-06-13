@@ -22,7 +22,6 @@ export default async function ProfilePage({
   return (
     <PublicProfile
       profile={{
-        id: profile.id,
         businessName: profile.businessName,
         slug: profile.slug,
         description: profile.description,

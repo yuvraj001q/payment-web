@@ -2,6 +2,7 @@
 
 import { useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import LinkTile from "@/components/tiles/LinkTile";
 import ImageTile from "@/components/tiles/ImageTile";
 import VideoTile from "@/components/tiles/VideoTile";
@@ -310,9 +311,9 @@ export default function PublicProfile({
           >
             <p className="text-xs text-muted-foreground">
               Powered by{" "}
-              <a href="/" className="underline hover:text-foreground transition-colors">
+              <Link href="/" className="underline hover:text-foreground transition-colors">
                 Predator Grid
-              </a>
+              </Link>
             </p>
           </motion.div>
         </div>

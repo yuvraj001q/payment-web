@@ -254,6 +254,7 @@ export default function ProfileEditor({ profile }: { profile: Profile }) {
       {/* Media */}
       <div className="glass-card p-6 space-y-5">
         <h2 className="text-lg font-semibold flex items-center gap-2">
+          {/* eslint-disable-next-line jsx-a11y/alt-text */}
           <Image className="h-5 w-5 text-cyan-400" />
           Images
         </h2>

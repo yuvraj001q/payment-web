@@ -26,7 +26,7 @@ export function useCountdown(targetDate: Date | string | null): CountdownTime {
 
     function calculate(): CountdownTime {
       const now = new Date().getTime();
-      const target = new Date(targetDate).getTime();
+      const target = new Date(targetDate!).getTime();
       const diff = target - now;
 
       if (diff <= 0) {
