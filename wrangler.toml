@@ -1,0 +1,3 @@
+name = "payment-web1"
+pages_build_output_dir = ".open-next"
+node_compat = true
