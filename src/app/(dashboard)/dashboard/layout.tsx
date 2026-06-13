@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import {
   LayoutDashboard,
@@ -14,7 +14,6 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-import { signOut } from "next-auth/react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -32,6 +31,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const router = useRouter();
   const [collapsed, setCollapsed] = useState(false);
 
   return (
@@ -75,7 +75,10 @@ export default function DashboardLayout({
 
         <div className="p-3 border-t border-white/5">
           <button
-            onClick={() => signOut({ callbackUrl: "/login" })}
+            onClick={async () => {
+              await fetch("/api/auth/logout", { method: "POST" });
+              router.push("/login");
+            }}
             className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-muted-foreground hover:text-red-400 hover:bg-red-500/10 transition-all w-full"
           >
             <LogOut className="h-5 w-5 shrink-0" />

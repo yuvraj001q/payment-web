@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { signIn } from "next-auth/react";
+
 import { motion } from "framer-motion";
 import { Mail, Lock, Eye, EyeOff, Loader2, Zap } from "lucide-react";
 
@@ -21,13 +21,13 @@ export default function LoginPage() {
     setError("");
 
     try {
-      const result = await signIn("credentials", {
-        email,
-        password,
-        redirect: false,
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
       });
 
-      if (result?.error) {
+      if (!res.ok) {
         setError("Invalid email or password");
         setLoading(false);
         return;

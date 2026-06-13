@@ -22,9 +22,7 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const sessionToken =
-    request.cookies.get("next-auth.session-token")?.value ||
-    request.cookies.get("__Secure-next-auth.session-token")?.value;
+  const sessionToken = request.cookies.get("auth-token")?.value;
 
   let token = null;
   if (sessionToken) {
