@@ -52,8 +52,8 @@ export async function verifyJWT<T = Record<string, unknown>>(
     const valid = await crypto.subtle.verify(
       "HMAC",
       key,
-      base64urlDecode(sig),
-      new TextEncoder().encode(`${header}.${body}`)
+      base64urlDecode(sig).buffer as ArrayBuffer,
+      new TextEncoder().encode(`${header}.${body}`).buffer as ArrayBuffer
     );
     if (!valid) return null;
     const payload = JSON.parse(new TextDecoder().decode(base64urlDecode(body)));
