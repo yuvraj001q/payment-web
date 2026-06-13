@@ -1,144 +1,185 @@
-import { createClient } from "@/lib/supabase/server";
+import { auth } from "@/config/auth";
+import { getProfileByUserId, getAnalyticsSummary, getTilesByProfileId } from "@/db/queries";
+import { redirect } from "next/navigation";
+import Link from "next/link";
+import {
+  Eye,
+  MousePointerClick,
+  QrCode,
+  Users,
+  ArrowUpRight,
+  ArrowDownRight,
+  LayoutGrid,
+  ExternalLink,
+} from "lucide-react";
+import { formatNumber } from "@/lib/utils";
 
 export default async function DashboardPage() {
-  const supabase = await createClient();
+  const session = await auth();
+  if (!session?.user) redirect("/login");
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const profile = await getProfileByUserId((session.user as any).id);
+  if (!profile) redirect("/dashboard/profile");
 
-  const { data: wallets } = await supabase
-    .from("wallets")
-    .select("*")
-    .order("created_at");
+  const [analytics, tiles] = await Promise.all([
+    getAnalyticsSummary(profile.id),
+    getTilesByProfileId(profile.id),
+  ]);
 
-  const { data: transactions } = await supabase
-    .from("transactions")
-    .select("id, amount, type, description, status, created_at")
-    .order("created_at", { ascending: false })
-    .limit(10);
-
-  const totalBalance =
-    wallets?.reduce((sum, w) => sum + Number(w.balance), 0) ?? 0;
+  const stats = [
+    {
+      label: "Total Views",
+      value: analytics?.totalViews || 0,
+      icon: Eye,
+      change: 12.5,
+      color: "text-indigo-400",
+      bg: "from-indigo-500/20 to-indigo-500/5",
+    },
+    {
+      label: "Tile Clicks",
+      value: analytics?.totalClicks || 0,
+      icon: MousePointerClick,
+      change: 8.2,
+      color: "text-purple-400",
+      bg: "from-purple-500/20 to-purple-500/5",
+    },
+    {
+      label: "QR Scans",
+      value: analytics?.totalQrScans || 0,
+      icon: QrCode,
+      change: 23.1,
+      color: "text-pink-400",
+      bg: "from-pink-500/20 to-pink-500/5",
+    },
+    {
+      label: "Unique Visitors",
+      value: analytics?.totalUniqueVisitors || 0,
+      icon: Users,
+      change: -3.2,
+      color: "text-cyan-400",
+      bg: "from-cyan-500/20 to-cyan-500/5",
+    },
+  ];
 
   return (
-    <div className="p-8 lg:p-10 max-w-6xl">
-      <div className="mb-10">
-        <h1 className="text-2xl font-semibold tracking-tight text-foreground">
-          Dashboard
-        </h1>
-        <p className="text-sm text-muted-foreground mt-1.5">
-          Welcome back, {user?.email?.split("@")[0] ?? "User"}.
-        </p>
+    <div className="space-y-8">
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-bold">Dashboard</h1>
+          <p className="text-muted-foreground mt-1">
+            Welcome back, {session.user.name}
+          </p>
+        </div>
+        <Link
+          href={`/${profile.slug}`}
+          target="_blank"
+          className="btn-secondary"
+        >
+          <ExternalLink className="h-4 w-4" />
+          View Live Page
+        </Link>
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 mb-10">
-        <div className="rounded-2xl border border-border bg-background p-6 lg:p-7">
-          <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
-            Total Balance
-          </p>
-          <p className="text-4xl lg:text-5xl font-light tracking-tight text-foreground mt-3 tabular-nums">
-            ${totalBalance.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-          </p>
-        </div>
-
-        <div className="rounded-2xl border border-border bg-background p-6 lg:p-7">
-          <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
-            Wallets
-          </p>
-          <p className="text-4xl lg:text-5xl font-light tracking-tight text-foreground mt-3 tabular-nums">
-            {wallets?.length ?? 0}
-          </p>
-          <p className="text-xs text-muted-foreground mt-2">
-            {wallets?.length === 1 ? "1 account" : `${wallets?.length ?? 0} accounts`}
-          </p>
-        </div>
-
-        <div className="rounded-2xl border border-border bg-background p-6 lg:p-7">
-          <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
-            Transactions
-          </p>
-          <p className="text-4xl lg:text-5xl font-light tracking-tight text-foreground mt-3 tabular-nums">
-            {transactions?.length ?? 0}
-          </p>
-          <p className="text-xs text-muted-foreground mt-2">
-            Recent 10
-          </p>
-        </div>
-      </div>
-
-      <div className="rounded-2xl border border-border bg-background">
-        <div className="px-6 lg:px-7 py-5 border-b border-border">
-          <h2 className="text-sm font-semibold text-foreground">
-            Recent Transactions
-          </h2>
-        </div>
-
-        {!transactions || transactions.length === 0 ? (
-          <div className="px-6 lg:px-7 py-12 text-center">
-            <p className="text-sm text-muted-foreground">No transactions yet.</p>
-            <p className="text-xs text-muted-foreground mt-1">
-              Your transaction history will appear here.
-            </p>
+      {/* Stats */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {stats.map((stat) => (
+          <div key={stat.label} className="glass-card p-5">
+            <div className="flex items-center justify-between">
+              <div
+                className={`w-10 h-10 rounded-xl bg-gradient-to-br ${stat.bg} border border-white/10 flex items-center justify-center`}
+              >
+                <stat.icon className={`h-5 w-5 ${stat.color}`} />
+              </div>
+              <span
+                className={`flex items-center gap-1 text-xs font-medium ${
+                  stat.change >= 0 ? "text-emerald-400" : "text-red-400"
+                }`}
+              >
+                {stat.change >= 0 ? (
+                  <ArrowUpRight className="h-3 w-3" />
+                ) : (
+                  <ArrowDownRight className="h-3 w-3" />
+                )}
+                {Math.abs(stat.change)}%
+              </span>
+            </div>
+            <div className="mt-4">
+              <div className="text-2xl font-bold">{formatNumber(stat.value)}</div>
+              <div className="text-sm text-muted-foreground">{stat.label}</div>
+            </div>
           </div>
-        ) : (
-          <div className="divide-y divide-border">
-            {transactions.map((tx) => {
-              const isCredit =
-                tx.type === "deposit" || tx.type === "transfer_in";
-              const isDebit =
-                tx.type === "withdrawal" || tx.type === "transfer_out";
-              return (
-                <div
-                  key={tx.id}
-                  className="px-6 lg:px-7 py-4 flex items-center justify-between gap-4"
-                >
-                  <div className="flex items-center gap-3 min-w-0">
-                    <div
-                      className={`w-2 h-2 rounded-full shrink-0 ${
-                        isCredit
-                          ? "bg-emerald-500"
-                          : isDebit
-                            ? "bg-red-500"
-                            : "bg-amber-500"
-                      }`}
-                    />
-                    <div className="min-w-0">
-                      <p className="text-sm font-medium text-foreground truncate">
-                        {tx.description ||
-                          tx.type.replace(/_/g, " ").replace(/(?:^|\s)\S/g, (s: string) =>
-                            s.toUpperCase()
-                          )}
-                      </p>
-                      <p className="text-xs text-muted-foreground mt-0.5">
-                        {new Date(tx.created_at).toLocaleDateString("en-US", {
-                          month: "short",
-                          day: "numeric",
-                          year: "numeric",
-                        })}
-                      </p>
-                    </div>
-                  </div>
-                  <span
-                    className={`text-sm font-medium tabular-nums shrink-0 ${
-                      isCredit
-                        ? "text-emerald-600 dark:text-emerald-400"
-                        : isDebit
-                          ? "text-red-600 dark:text-red-400"
-                          : "text-muted-foreground"
-                    }`}
-                  >
-                    {isCredit ? "+" : isDebit ? "−" : ""}$
-                    {Number(tx.amount).toLocaleString("en-US", {
-                      minimumFractionDigits: 2,
-                      maximumFractionDigits: 2,
-                    })}
-                  </span>
+        ))}
+      </div>
+
+      {/* Quick Actions */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="glass-card p-6">
+          <h2 className="text-lg font-semibold mb-4">Quick Actions</h2>
+          <div className="space-y-3">
+            <Link
+              href="/dashboard/tiles"
+              className="flex items-center justify-between p-3 rounded-xl hover:bg-white/5 transition-all group"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center">
+                  <LayoutGrid className="h-5 w-5 text-indigo-400" />
                 </div>
-              );
-            })}
+                <div>
+                  <div className="text-sm font-medium">Manage Tiles</div>
+                  <div className="text-xs text-muted-foreground">
+                    {tiles.length} tiles configured
+                  </div>
+                </div>
+              </div>
+              <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+            </Link>
+            <Link
+              href="/dashboard/profile"
+              className="flex items-center justify-between p-3 rounded-xl hover:bg-white/5 transition-all group"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center">
+                  <Eye className="h-5 w-5 text-purple-400" />
+                </div>
+                <div>
+                  <div className="text-sm font-medium">Edit Profile</div>
+                  <div className="text-xs text-muted-foreground">
+                    /{profile.slug}
+                  </div>
+                </div>
+              </div>
+              <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+            </Link>
           </div>
-        )}
+        </div>
+
+        <div className="glass-card p-6">
+          <h2 className="text-lg font-semibold mb-4">Profile Summary</h2>
+          <div className="space-y-3">
+            <div className="flex justify-between text-sm">
+              <span className="text-muted-foreground">Business</span>
+              <span className="font-medium">{profile.businessName}</span>
+            </div>
+            <div className="flex justify-between text-sm">
+              <span className="text-muted-foreground">Category</span>
+              <span className="font-medium capitalize">{profile.category}</span>
+            </div>
+            <div className="flex justify-between text-sm">
+              <span className="text-muted-foreground">Slug</span>
+              <span className="font-medium">/{profile.slug}</span>
+            </div>
+            <div className="flex justify-between text-sm">
+              <span className="text-muted-foreground">Tiles</span>
+              <span className="font-medium">{tiles.length}</span>
+            </div>
+            <div className="flex justify-between text-sm">
+              <span className="text-muted-foreground">Created</span>
+              <span className="font-medium">
+                {new Date(profile.createdAt).toLocaleDateString()}
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

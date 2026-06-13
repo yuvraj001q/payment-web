@@ -1,36 +1,50 @@
-import { type NextRequest, NextResponse } from "next/server";
-import { updateSession } from "@/lib/supabase/middleware";
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import { getToken } from "next-auth/jwt";
 
 export async function middleware(request: NextRequest) {
-  const { supabaseResponse, user } = await updateSession(request);
+  const token = await getToken({
+    req: request,
+    secret: process.env.NEXTAUTH_SECRET,
+  });
 
   const { pathname } = request.nextUrl;
 
-  const isProtectedRoute =
-    pathname.startsWith("/dashboard") || pathname.startsWith("/transfer");
+  const publicPaths = ["/", "/login", "/register", "/landing", "/api/auth"];
+  const isPublicPath = publicPaths.some(
+    (path) => pathname === path || pathname.startsWith(path + "/")
+  );
 
-  const isAuthRoute = pathname.startsWith("/auth");
+  const isProfilePage =
+    pathname !== "/" &&
+    !pathname.startsWith("/api") &&
+    !pathname.startsWith("/login") &&
+    !pathname.startsWith("/register") &&
+    !pathname.startsWith("/landing") &&
+    !pathname.startsWith("/dashboard") &&
+    !pathname.startsWith("/_next");
 
-  if (isProtectedRoute && !user) {
-    const url = new URL("/auth", request.url);
-    url.searchParams.set("redirect", pathname);
-    return NextResponse.redirect(url);
+  if (isProfilePage) {
+    return NextResponse.next();
   }
 
-  if (isAuthRoute && user) {
+  if (!isPublicPath && !token) {
+    const loginUrl = new URL("/login", request.url);
+    loginUrl.searchParams.set("callbackUrl", pathname);
+    return NextResponse.redirect(loginUrl);
+  }
+
+  if (pathname.startsWith("/dashboard") && token) {
+    return NextResponse.next();
+  }
+
+  if ((pathname === "/login" || pathname === "/register") && token) {
     return NextResponse.redirect(new URL("/dashboard", request.url));
   }
 
-  return supabaseResponse;
+  return NextResponse.next();
 }
 
 export const config = {
-  matcher: [
-    "/dashboard",
-    "/dashboard/:path*",
-    "/transfer",
-    "/transfer/:path*",
-    "/auth",
-    "/auth/:path*",
-  ],
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|public).*)"],
 };

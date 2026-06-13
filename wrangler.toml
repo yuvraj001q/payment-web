@@ -1,0 +1,17 @@
+name = "predator-grid"
+compatibility_date = "2024-01-01"
+pages_build_output_dir = ".vercel/output/static"
+
+[vars]
+NEXT_PUBLIC_APP_URL = "https://predatorgrid.com"
+
+[env]
+DATABASE_URL = { preview = "postgresql://...", production = "postgresql://..." }
+NEXTAUTH_SECRET = { preview = "...", production = "..." }
+NEXTAUTH_URL = { preview = "http://localhost:3000", production = "https://predatorgrid.com" }
+
+[[pages]]
+directory = ".vercel/output/static"
+
+[[pages.build]]
+command = "npm run build"
