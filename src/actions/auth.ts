@@ -1,6 +1,5 @@
 "use server";
 
-import bcrypt from "bcryptjs";
 import { z } from "zod";
 import { createUser, getUserByEmail, createProfile, slugExists } from "@/db/queries";
 import { generateSlug } from "@/lib/utils";
@@ -20,6 +19,7 @@ export async function registerAction(data: { name: string; email: string; passwo
       return { error: "Email already in use" };
     }
 
+    const bcrypt = await import("bcryptjs");
     const passwordHash = await bcrypt.hash(validated.password, 12);
 
     const user = await createUser({

@@ -1,6 +1,5 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import bcrypt from "bcryptjs";
 import { getUserByEmail } from "@/db/queries";
 
 export const {
@@ -19,6 +18,7 @@ export const {
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) return null;
 
+        const bcrypt = await import("bcryptjs");
         const user = await getUserByEmail(credentials.email as string);
         if (!user) return null;
 
