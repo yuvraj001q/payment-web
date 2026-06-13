@@ -12,7 +12,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npx @opennextjs/cloudflare build --skipWranglerConfigCheck
+      - run: npm run build:worker
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
         with:
