@@ -1,13 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { getToken } from "next-auth/jwt";
 
 export async function middleware(request: NextRequest) {
-  const token = await getToken({
-    req: request,
-    secret: process.env.NEXTAUTH_SECRET,
-  });
-
   const { pathname } = request.nextUrl;
 
   const publicPaths = ["/", "/login", "/register", "/landing", "/api/auth"];
@@ -26,6 +20,25 @@ export async function middleware(request: NextRequest) {
 
   if (isProfilePage) {
     return NextResponse.next();
+  }
+
+  const sessionToken =
+    request.cookies.get("next-auth.session-token")?.value ||
+    request.cookies.get("__Secure-next-auth.session-token")?.value;
+
+  let token = null;
+  if (sessionToken) {
+    try {
+      const parts = sessionToken.split(".");
+      if (parts.length === 3) {
+        const payload = JSON.parse(atob(parts[1]));
+        if (payload.exp && payload.exp * 1000 > Date.now()) {
+          token = payload;
+        }
+      }
+    } catch {
+      token = null;
+    }
   }
 
   if (!isPublicPath && !token) {
