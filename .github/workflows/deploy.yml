@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy to Cloudflare Pages
 
 on:
   push:
@@ -23,16 +23,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Lint
-        run: npm run lint
-        continue-on-error: true
-
-      - name: Type check
-        run: npm run typecheck
-        continue-on-error: true
-
-      - name: Build
-        run: npm run build
+      - name: Build for Cloudflare Pages
+        run: npx @cloudflare/next-on-pages
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
@@ -45,4 +37,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy .vercel/output/static --project-name=predator-grid
+          command: pages deploy .vercel/output/static --project-name=predator-grid --branch=production
