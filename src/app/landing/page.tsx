@@ -23,42 +23,42 @@ const features = [
     title: "Bento Grid Layout",
     description:
       "Premium glassmorphic tiles that convert visitors into customers.",
-    image: "https://picsum.photos/seed/bento-grid/600/400",
+    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&h=400&fit=crop",
     link: "/register",
   },
   {
     icon: QrCode,
     title: "QR Code Engine",
     description: "Generate custom QR codes with your branding and analytics.",
-    image: "https://picsum.photos/seed/qr-code/600/400",
+    image: "https://images.unsplash.com/photo-1595079676339-1534801ad6cf?w=600&h=400&fit=crop",
     link: "/register",
   },
   {
     icon: BarChart3,
     title: "Real-time Analytics",
     description: "Track views, clicks, QR scans, devices, and countries.",
-    image: "https://picsum.photos/seed/analytics/600/400",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
     link: "/register",
   },
   {
     icon: Globe,
     title: "Local SEO Power",
     description: "Auto-generated schema markup and Open Graph tags.",
-    image: "https://picsum.photos/seed/seo-globe/600/400",
+    image: "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=600&h=400&fit=crop",
     link: "/register",
   },
   {
     icon: Shield,
     title: "Enterprise Security",
     description: "Bank-level encryption and secure password hashing.",
-    image: "https://picsum.photos/seed/security/600/400",
+    image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600&h=400&fit=crop",
     link: "/register",
   },
   {
     icon: Zap,
     title: "Flash Offers",
     description: "Create urgency with live countdown timers.",
-    image: "https://picsum.photos/seed/flash-offer/600/400",
+    image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600&h=400&fit=crop",
     link: "/register",
   },
 ];
@@ -163,7 +163,7 @@ export default function LandingPage() {
             <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-4 sm:p-6 shadow-[0_0_40px_rgba(99,102,241,0.15)]">
               <div className="grid grid-cols-4 grid-rows-3 gap-3 h-[360px] sm:h-[420px]">
                 <div className="col-span-2 row-span-2 rounded-xl overflow-hidden relative group cursor-pointer">
-                  <img src="https://picsum.photos/seed/featured-dish/800/600" alt="Featured dish" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&h=600&fit=crop" alt="Featured dish" referrerPolicy="no-referrer" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-5">
                     <span className="text-xs text-indigo-400 font-medium mb-1 block">Featured</span>
@@ -172,7 +172,7 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer">
-                  <img src="https://picsum.photos/seed/whatsapp-chat/400/300" alt="WhatsApp chat" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&h=300&fit=crop" alt="WhatsApp chat" referrerPolicy="no-referrer" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-3">
                     <span className="text-xs font-medium text-green-400">WhatsApp</span>
@@ -180,7 +180,7 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="col-span-1 row-span-2 rounded-xl overflow-hidden relative group cursor-pointer">
-                  <img src="https://picsum.photos/seed/flash-sale/400/600" alt="Flash sale" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <img src="https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=400&h=600&fit=crop" alt="Flash sale" referrerPolicy="no-referrer" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-3">
                     <span className="text-xs font-medium text-amber-400">Flash Sale</span>
@@ -189,7 +189,7 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer">
-                  <img src="https://picsum.photos/seed/coffee-menu/400/300" alt="Menu" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=300&fit=crop" alt="Menu" referrerPolicy="no-referrer" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-3">
                     <span className="text-xs font-medium text-blue-400">Menu</span>
@@ -197,7 +197,7 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer">
-                  <img src="https://picsum.photos/seed/review-stars/400/300" alt="Reviews" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=400&h=300&fit=crop" alt="Reviews" referrerPolicy="no-referrer" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-3">
                     <span className="text-xs font-medium text-pink-400">Reviews</span>
@@ -205,7 +205,7 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="col-span-2 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer">
-                  <img src="https://picsum.photos/seed/map-location/600/300" alt="Location" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <img src="https://images.unsplash.com/photo-1569336415962-a4d2f2b7b9b5?w=600&h=300&fit=crop" alt="Location" referrerPolicy="no-referrer" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-3 flex items-center justify-between">
                     <div>
@@ -216,7 +216,7 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer">
-                  <img src="https://picsum.photos/seed/video-player/400/300" alt="Video" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=400&h=300&fit=crop" alt="Video" referrerPolicy="no-referrer" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-3">
                     <span className="text-xs font-medium text-red-400">Video</span>
@@ -224,7 +224,7 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="col-span-2 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer">
-                  <img src="https://picsum.photos/seed/book-table/600/300" alt="Book a table" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=300&fit=crop" alt="Book a table" referrerPolicy="no-referrer" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-3 flex items-center justify-between">
                     <div>
