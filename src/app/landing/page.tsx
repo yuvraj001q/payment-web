@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import BlackHoleBackground from "@/components/background/BlackHoleBackground";
 
 const features = [
   {
@@ -92,7 +93,8 @@ export default function LandingPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f] text-white">
+    <div className="min-h-screen text-white">
+      <BlackHoleBackground />
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0f]/80 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2 text-xl font-bold">
@@ -114,8 +116,6 @@ export default function LandingPage() {
       </nav>
 
       <section className="relative pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/30 via-[#0a0a0f] to-[#0a0a0f]" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500/20 rounded-full blur-[120px]" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
@@ -242,7 +242,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section id="features" className="py-24">
+      <section id="features" className="py-24 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -294,7 +294,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="py-24">
+      <section className="py-24 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -326,7 +326,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="py-24">
+      <section className="py-24 relative z-10">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -370,7 +370,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="py-24">
+      <section className="py-24 relative z-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -399,7 +399,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <footer className="border-t border-white/5 py-12">
+      <footer className="border-t border-white/5 py-12 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-2 text-lg font-bold">
