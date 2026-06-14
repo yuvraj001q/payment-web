@@ -49,6 +49,7 @@ export async function registerAction(data: { name: string; email: string; passwo
     if (error instanceof z.ZodError) {
       return { error: error.errors[0].message };
     }
-    return { error: "Failed to create account" };
+    const msg = error instanceof Error ? error.message : String(error);
+    return { error: `Failed to create account: ${msg}` };
   }
 }
