@@ -8,6 +8,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://payment-web1.yuvrajsinghnegi001.workers.dev"),
   title: {
     default: "Predator Grid - The Bento-Grid Linktree Killer",
     template: "%s | Predator Grid",
