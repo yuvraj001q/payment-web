@@ -205,7 +205,7 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="col-span-2 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer">
-                  <img src="https://images.unsplash.com/photo-1569336415962-a4d2f2b7b9b5?w=600&h=300&fit=crop" alt="Location" referrerPolicy="no-referrer" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&h=300&fit=crop" alt="Location" referrerPolicy="no-referrer" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-3 flex items-center justify-between">
                     <div>
