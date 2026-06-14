@@ -10,12 +10,8 @@ import {
   BarChart3,
   Zap,
   ArrowRight,
-  Check,
   ChevronDown,
   Sparkles,
-  Star,
-  Smartphone,
-  StarHalf,
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -26,63 +22,51 @@ const features = [
     title: "Bento Grid Layout",
     description:
       "Premium glassmorphic tiles that convert visitors into customers.",
+    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&h=400&fit=crop",
+    link: "/register",
   },
   {
     icon: QrCode,
     title: "QR Code Engine",
     description: "Generate custom QR codes with your branding and analytics.",
+    image: "https://images.unsplash.com/photo-1595079676339-1534801ad6cf?w=600&h=400&fit=crop",
+    link: "/register",
   },
   {
     icon: BarChart3,
     title: "Real-time Analytics",
     description: "Track views, clicks, QR scans, devices, and countries.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+    link: "/register",
   },
   {
     icon: Globe,
     title: "Local SEO Power",
     description: "Auto-generated schema markup and Open Graph tags.",
+    image: "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=600&h=400&fit=crop",
+    link: "/register",
   },
   {
     icon: Shield,
     title: "Enterprise Security",
     description: "Bank-level encryption and secure password hashing.",
+    image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600&h=400&fit=crop",
+    link: "/register",
   },
   {
     icon: Zap,
     title: "Flash Offers",
     description: "Create urgency with live countdown timers.",
+    image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600&h=400&fit=crop",
+    link: "/register",
   },
 ];
 
 const stats = [
-  { label: "Businesses", value: "2,500+" },
-  { label: "Pages Created", value: "12,000+" },
-  { label: "QR Scans", value: "500K+" },
-  { label: "Click-through", value: "4.2x" },
-];
-
-const testimonials = [
-  {
-    name: "Sarah Chen",
-    role: "Owner, Bloom Cafe",
-    content:
-      "Predator Grid tripled our online orders. The Bento Grid layout is infinitely better than Linktree.",
-    rating: 5,
-  },
-  {
-    name: "Marcus Johnson",
-    role: "Manager, FitZone Gym",
-    content:
-      "The flash offers feature alone is worth it. We run daily deals and the countdown creates real urgency.",
-    rating: 5,
-  },
-  {
-    name: "Priya Sharma",
-    role: "Owner, Spice Garden",
-    content:
-      "Our QR codes are on every table now. Customers scan, see our menu with images, and order directly.",
-    rating: 5,
-  },
+  { label: "Businesses", value: "0" },
+  { label: "Pages Created", value: "0" },
+  { label: "QR Scans", value: "0" },
+  { label: "Click-through", value: "0" },
 ];
 
 const faqs = [
@@ -282,15 +266,28 @@ export default function LandingPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 hover:bg-white/[0.08] transition-all group"
               >
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-white/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <f.icon className="h-6 w-6 text-indigo-400" />
-                </div>
-                <h3 className="text-lg font-semibold">{f.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                  {f.description}
-                </p>
+                <Link
+                  href={f.link}
+                  className="block bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden hover:bg-white/[0.08] transition-all group h-full"
+                >
+                  <div className="h-48 overflow-hidden">
+                    <img
+                      src={f.image}
+                      alt={f.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-white/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                      <f.icon className="h-6 w-6 text-indigo-400" />
+                    </div>
+                    <h3 className="text-lg font-semibold">{f.title}</h3>
+                    <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                      {f.description}
+                    </p>
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -319,63 +316,9 @@ export default function LandingPage() {
                 transition={{ delay: i * 0.1 }}
                 className="text-center"
               >
-                <div className="text-3xl font-bold gradient-text">{s.value}</div>
+                <div className="text-3xl font-bold text-white/40">{s.value}</div>
                 <div className="text-sm text-muted-foreground mt-1">
                   {s.label}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold">
-              Loved by Local Businesses
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map((t, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6"
-              >
-                <div className="flex gap-1 mb-4">
-                  {Array.from({ length: t.rating }).map((_, j) => (
-                    <Star
-                      key={j}
-                      className="h-4 w-4 text-amber-400 fill-amber-400"
-                    />
-                  ))}
-                </div>
-                <p className="text-muted-foreground leading-relaxed mb-6">
-                  &ldquo;{t.content}&rdquo;
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center text-sm font-bold">
-                    {t.name
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")}
-                  </div>
-                  <div>
-                    <div className="text-sm font-medium">{t.name}</div>
-                    <div className="text-xs text-muted-foreground">
-                      {t.role}
-                    </div>
-                  </div>
                 </div>
               </motion.div>
             ))}
