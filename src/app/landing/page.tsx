@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import BlackHoleBackground from "@/components/background/BlackHoleBackground";
+import StarBackground from "@/components/background/BlackHoleBackground";
 
 const features = [
   {
@@ -94,7 +94,7 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen text-white">
-      <BlackHoleBackground />
+      <StarBackground />
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0f]/80 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2 text-xl font-bold">
@@ -162,79 +162,77 @@ export default function LandingPage() {
           >
             <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-4 sm:p-6 shadow-[0_0_40px_rgba(99,102,241,0.15)]">
               <div className="grid grid-cols-4 grid-rows-3 gap-3 h-[360px] sm:h-[420px]">
-                <div className="col-span-2 row-span-2 rounded-xl bg-gradient-to-br from-indigo-500/20 to-purple-500/20 border border-white/10 p-5 flex flex-col justify-end">
-                  <span className="text-xs text-indigo-400 font-medium mb-1">
-                    Featured
-                  </span>
-                  <span className="text-lg font-semibold">
-                    Summer Menu Launch
-                  </span>
-                  <span className="text-sm text-muted-foreground mt-1">
-                    50% off all new items
-                  </span>
-                </div>
-                <div className="col-span-1 row-span-1 rounded-xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 border border-white/10 p-3 flex flex-col justify-end">
-                  <span className="text-xs font-medium text-green-400">
-                    WhatsApp
-                  </span>
-                  <span className="text-xs text-muted-foreground mt-1">
-                    Chat Now
-                  </span>
-                </div>
-                <div className="col-span-1 row-span-2 rounded-xl bg-gradient-to-br from-amber-500/20 to-orange-500/20 border border-white/10 p-3 flex flex-col justify-end">
-                  <span className="text-xs font-medium text-amber-400">
-                    Flash Sale
-                  </span>
-                  <span className="text-lg font-bold mt-1">47:23:11</span>
-                  <span className="text-xs text-muted-foreground">
-                    30% off
-                  </span>
-                </div>
-                <div className="col-span-1 row-span-1 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-white/10 p-3 flex flex-col justify-end">
-                  <span className="text-xs font-medium text-blue-400">
-                    Menu
-                  </span>
-                  <span className="text-xs text-muted-foreground mt-1">
-                    View Menu
-                  </span>
-                </div>
-                <div className="col-span-1 row-span-1 rounded-xl bg-gradient-to-br from-pink-500/20 to-rose-500/20 border border-white/10 p-3 flex flex-col justify-end">
-                  <span className="text-xs font-medium text-pink-400">
-                    Reviews
-                  </span>
-                  <span className="text-xs text-muted-foreground mt-1">
-                    4.9 ★
-                  </span>
-                </div>
-                <div className="col-span-2 row-span-1 rounded-xl bg-gradient-to-br from-purple-500/20 to-violet-500/20 border border-white/10 p-3 flex items-center justify-between">
-                  <div>
-                    <span className="text-xs font-medium text-purple-400">
-                      Location
-                    </span>
-                    <span className="text-xs text-muted-foreground block mt-1">
-                      123 Main St, Delhi
-                    </span>
+                <div className="col-span-2 row-span-2 rounded-xl overflow-hidden relative group cursor-pointer">
+                  <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=600&fit=crop" alt="Featured dish" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-5">
+                    <span className="text-xs text-indigo-400 font-medium mb-1 block">Featured</span>
+                    <span className="text-lg font-semibold text-white">Summer Menu Launch</span>
+                    <span className="text-sm text-white/70 mt-1 block">50% off all new items</span>
                   </div>
-                  <Globe className="h-5 w-5 text-purple-400" />
                 </div>
-                <div className="col-span-1 row-span-1 rounded-xl bg-gradient-to-br from-red-500/20 to-orange-500/20 border border-white/10 p-3 flex flex-col justify-end">
-                  <span className="text-xs font-medium text-red-400">
-                    Video
-                  </span>
-                  <span className="text-xs text-muted-foreground mt-1">
-                    Watch
-                  </span>
-                </div>
-                <div className="col-span-2 row-span-1 rounded-xl bg-gradient-to-br from-teal-500/20 to-cyan-500/20 border border-white/10 p-3 flex items-center justify-between">
-                  <div>
-                    <span className="text-xs font-medium text-teal-400">
-                      Book a Table
-                    </span>
-                    <span className="text-xs text-muted-foreground block mt-1">
-                      Reserve Now
-                    </span>
+                <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer">
+                  <img src="https://images.unsplash.com/photo-1611606063065-ee7946f0787a?w=400&h=300&fit=crop" alt="WhatsApp chat" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3">
+                    <span className="text-xs font-medium text-green-400">WhatsApp</span>
+                    <span className="text-xs text-white/70 mt-1 block">Chat Now</span>
                   </div>
-                  <MousePointerClick className="h-5 w-5 text-teal-400" />
+                </div>
+                <div className="col-span-1 row-span-2 rounded-xl overflow-hidden relative group cursor-pointer">
+                  <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&h=600&fit=crop" alt="Flash sale" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3">
+                    <span className="text-xs font-medium text-amber-400">Flash Sale</span>
+                    <span className="text-lg font-bold text-white mt-1 block">47:23:11</span>
+                    <span className="text-xs text-white/70">30% off</span>
+                  </div>
+                </div>
+                <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer">
+                  <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=300&fit=crop" alt="Menu" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3">
+                    <span className="text-xs font-medium text-blue-400">Menu</span>
+                    <span className="text-xs text-white/70 mt-1 block">View Menu</span>
+                  </div>
+                </div>
+                <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer">
+                  <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=400&h=300&fit=crop" alt="Reviews" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3">
+                    <span className="text-xs font-medium text-pink-400">Reviews</span>
+                    <span className="text-xs text-white/70 mt-1 block">4.9 ★</span>
+                  </div>
+                </div>
+                <div className="col-span-2 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer">
+                  <img src="https://images.unsplash.com/photo-1569336415962-a4d2f2b7b9b5?w=600&h=300&fit=crop" alt="Location" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3 flex items-center justify-between">
+                    <div>
+                      <span className="text-xs font-medium text-purple-400">Location</span>
+                      <span className="text-xs text-white/70 block mt-1">123 Main St, Delhi</span>
+                    </div>
+                    <Globe className="h-5 w-5 text-purple-400" />
+                  </div>
+                </div>
+                <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer">
+                  <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d43d?w=400&h=300&fit=crop" alt="Video" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3">
+                    <span className="text-xs font-medium text-red-400">Video</span>
+                    <span className="text-xs text-white/70 mt-1 block">Watch</span>
+                  </div>
+                </div>
+                <div className="col-span-2 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer">
+                  <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&h=300&fit=crop" alt="Book a table" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-3 flex items-center justify-between">
+                    <div>
+                      <span className="text-xs font-medium text-teal-400">Book a Table</span>
+                      <span className="text-xs text-white/70 block mt-1">Reserve Now</span>
+                    </div>
+                    <MousePointerClick className="h-5 w-5 text-teal-400" />
+                  </div>
                 </div>
               </div>
             </div>
