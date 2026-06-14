@@ -163,7 +163,7 @@ export default function LandingPage() {
             <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-4 sm:p-6 shadow-[0_0_40px_rgba(99,102,241,0.15)]">
               <div className="grid grid-cols-4 grid-rows-3 gap-3 h-[360px] sm:h-[420px]">
                 <div className="col-span-2 row-span-2 rounded-xl overflow-hidden relative group cursor-pointer">
-                  <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&h=600&fit=crop" alt="Featured dish" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&h=600&fit=crop" alt="Featured dish" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-5">
                     <span className="text-xs text-indigo-400 font-medium mb-1 block">Featured</span>
@@ -172,7 +172,7 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer">
-                  <img src="https://images.unsplash.com/photo-1611606063065-ee7946f0787a?w=400&h=300&fit=crop" alt="WhatsApp chat" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <img src="https://images.unsplash.com/photo-1611606063065-ee7946f0787a?w=400&h=300&fit=crop" alt="WhatsApp chat" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-3">
                     <span className="text-xs font-medium text-green-400">WhatsApp</span>
@@ -180,7 +180,7 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="col-span-1 row-span-2 rounded-xl overflow-hidden relative group cursor-pointer">
-                  <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&h=600&fit=crop" alt="Flash sale" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&h=600&fit=crop" alt="Flash sale" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-3">
                     <span className="text-xs font-medium text-amber-400">Flash Sale</span>
@@ -189,7 +189,7 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer">
-                  <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&h=300&fit=crop" alt="Menu" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&h=300&fit=crop" alt="Menu" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-3">
                     <span className="text-xs font-medium text-blue-400">Menu</span>
@@ -197,7 +197,7 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer">
-                  <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=400&h=300&fit=crop" alt="Reviews" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <img src="https://images.unsplash.com/photo-1532635241-17aa820e54c5?w=400&h=300&fit=crop" alt="Reviews" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-3">
                     <span className="text-xs font-medium text-pink-400">Reviews</span>
@@ -205,7 +205,7 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="col-span-2 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer">
-                  <img src="https://images.unsplash.com/photo-1569336415962-a4d2f2b7b9b5?w=600&h=300&fit=crop" alt="Location" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <img src="https://images.unsplash.com/photo-1569336415962-a4d2f2b7b9b5?w=600&h=300&fit=crop" alt="Location" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-3 flex items-center justify-between">
                     <div>
@@ -216,7 +216,7 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="col-span-1 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer">
-                  <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d43d?w=400&h=300&fit=crop" alt="Video" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d43d?w=400&h=300&fit=crop" alt="Video" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-3">
                     <span className="text-xs font-medium text-red-400">Video</span>
@@ -224,7 +224,7 @@ export default function LandingPage() {
                   </div>
                 </div>
                 <div className="col-span-2 row-span-1 rounded-xl overflow-hidden relative group cursor-pointer">
-                  <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&h=300&fit=crop" alt="Book a table" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&h=300&fit=crop" alt="Book a table" className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-3 flex items-center justify-between">
                     <div>
